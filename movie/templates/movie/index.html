@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{%static 'movie/style.css' %}" />
+<link rel="stylesheet" href = "maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'movie:index' %}">CAT</a>
+        </div>
+    </div>
+</nav>
+
+{% if all_movies %}
+    <h3>Here are all my Movies</h3>
+    <u1>
+        {% for movie in all_movies %}
+        <li><a href = "{% url 'movie:detail' movie.id%}">{{movie.movie_title}}</a></li>
+        {% endfor %}
+    </u1>
+{% else %}}
+    <h3>You don't have any movies</h3>
+{% endif %}
